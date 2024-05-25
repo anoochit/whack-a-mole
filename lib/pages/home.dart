@@ -96,7 +96,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   itemBuilder: (context, index) {
                     return MoleButton(
-                      active: (_molePosition == index),
+                      active: (_molePosition == index) && (_countDown != 30),
                       onTap: () {
                         if ((_molePosition == index) && (_countDown <= 30)) {
                           _score++;

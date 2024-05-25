@@ -30,7 +30,7 @@ class MoleButton extends StatelessWidget {
                   borderRadius: BorderRadiusDirectional.circular(
                     (constraints.maxWidth),
                   ),
-                  color: Colors.brown.shade100,
+                  color: Colors.brown.shade200,
                 ),
               ),
             ),
