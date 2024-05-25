@@ -1,11 +1,11 @@
-import 'dart:async';
-import 'dart:math';
-import 'dart:developer' as dev;
+import 'dart:async'; // Provides asynchronous programming using Future and Stream
+import 'dart:math'; // Provides mathematical constants and functions
+import 'dart:developer' as dev; // Provides logging for development purposes
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
-import 'package:whackmole/widgets/mole_button.dart';
+import 'package:flutter/foundation.dart'; // Foundation library for Flutter framework
+import 'package:flutter/material.dart'; // Flutter framework for building UI
+import 'package:gap/gap.dart'; // Provides spacing widgets
+import 'package:whackmole/widgets/mole_button.dart'; // Importing the MoleButton widget from your project
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -15,23 +15,33 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  // Score of the game
   int _score = 0;
+
+  // Visibility state of the start button
   bool _startButtonVisible = true;
 
-  late Timer timer;
-  late Timer moleTick;
+  // Timer for the game countdown
+  late Timer _timer;
 
+  // Timer for the mole's appearance
+  late Timer _moleTick;
+
+  // Countdown time in seconds
   int _countDown = 30;
+
+  // Position of the mole (0 to 8)
   int _molePosition = 0;
 
+  // Starts the game
   startGame() {
     _score = 0;
-    timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       _countDown--;
       dev.log('count down = $_countDown');
       if (_countDown == 0) {
-        timer.cancel();
-        moleTick.cancel();
+        _timer.cancel();
+        _moleTick.cancel();
         setState(() {
           _countDown = 30;
           _startButtonVisible = true;
@@ -39,7 +49,7 @@ class _HomePageState extends State<HomePage> {
       }
     });
 
-    moleTick = Timer.periodic(
+    _moleTick = Timer.periodic(
       const Duration(milliseconds: 350),
       (timer) {
         setState(() {
@@ -68,14 +78,16 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                // score
+                // Gap for spacing
                 const Gap(16.0),
+                // Displays the score
                 Text(
                   'Score = $_score',
                   style: Theme.of(context).textTheme.headlineLarge,
                 ),
                 const Gap(16.0),
 
+                // Displays the countdown timer
                 Text(
                   'Timer : $_countDown Sec',
                   style: Theme.of(context).textTheme.headlineMedium,
@@ -83,7 +95,7 @@ class _HomePageState extends State<HomePage> {
 
                 const Gap(24.0),
 
-                // mole buttons
+                // Grid of mole buttons
                 GridView.builder(
                   padding: const EdgeInsets.all(8.0),
                   itemCount: 9,
@@ -108,7 +120,7 @@ class _HomePageState extends State<HomePage> {
 
                 const Gap(16.0),
 
-                // start button
+                // Start button
                 Visibility(
                   visible: _startButtonVisible,
                   child: Container(
@@ -117,7 +129,7 @@ class _HomePageState extends State<HomePage> {
                     height: 48.0,
                     child: FilledButton(
                       onPressed: () {
-                        // start game
+                        // Starts the game
                         startGame();
                       },
                       child: Text(
