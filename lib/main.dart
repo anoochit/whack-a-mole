@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:whackmole/pages/home.dart';
 
 void main() {
@@ -33,6 +34,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.brown),
         useMaterial3: true,
+        textTheme: TextTheme(
+          headlineLarge:
+              GoogleFonts.permanentMarker(fontWeight: FontWeight.w400),
+          headlineMedium:
+              GoogleFonts.permanentMarker(fontWeight: FontWeight.w300),
+        ),
       ),
       home: const HomePage(),
     );

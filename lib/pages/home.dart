@@ -121,7 +121,7 @@ class _HomePageState extends State<HomePage> {
                         startGame();
                       },
                       child: Text(
-                        'Start',
+                        'Start!',
                         style: Theme.of(context)
                             .textTheme
                             .headlineMedium!
