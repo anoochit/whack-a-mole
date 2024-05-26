@@ -83,14 +83,20 @@ class _HomePageState extends State<HomePage> {
                 // Displays the score
                 Text(
                   'Score = $_score',
-                  style: Theme.of(context).textTheme.headlineLarge,
+                  style: Theme.of(context)
+                      .textTheme
+                      .displayMedium!
+                      .copyWith(color: Colors.blue),
                 ),
                 const Gap(16.0),
 
                 // Displays the countdown timer
                 Text(
                   'Timer : $_countDown Sec',
-                  style: Theme.of(context).textTheme.headlineMedium,
+                  style: Theme.of(context)
+                      .textTheme
+                      .headlineMedium!
+                      .copyWith(color: Colors.red),
                 ),
 
                 const Gap(24.0),
@@ -103,8 +109,8 @@ class _HomePageState extends State<HomePage> {
                   shrinkWrap: true,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
-                    mainAxisSpacing: 4.0,
-                    crossAxisSpacing: 4.0,
+                    mainAxisSpacing: 8.0,
+                    crossAxisSpacing: 8.0,
                   ),
                   itemBuilder: (context, index) {
                     return MoleButton(
@@ -128,6 +134,9 @@ class _HomePageState extends State<HomePage> {
                     width: MediaQuery.sizeOf(context).width,
                     height: 48.0,
                     child: FilledButton(
+                      style: ButtonStyle(
+                        backgroundColor: WidgetStatePropertyAll(Colors.green),
+                      ),
                       onPressed: () {
                         // Starts the game
                         startGame();
