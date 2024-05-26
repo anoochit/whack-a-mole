@@ -134,7 +134,7 @@ class _HomePageState extends State<HomePage> {
                     width: MediaQuery.sizeOf(context).width,
                     height: 48.0,
                     child: FilledButton(
-                      style: ButtonStyle(
+                      style: const ButtonStyle(
                         backgroundColor: WidgetStatePropertyAll(Colors.green),
                       ),
                       onPressed: () {
