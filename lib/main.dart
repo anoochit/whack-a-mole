@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
         // Use Material 3 design
         useMaterial3: true,
         textTheme: TextTheme(
-          // Custom font for large headlines
+          // Custom font for Medium display
           displayMedium:
               GoogleFonts.permanentMarker(fontWeight: FontWeight.w400),
           // Custom font for large headlines
